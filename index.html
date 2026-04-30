@@ -1,0 +1,921 @@
+<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Payel Nath — Senior Product Owner in pivot to Product Management. 10 years across Supply Chain, Logistics Tech, and Enterprise API platforms.">
+    <title>Payel Nath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg:         #06080f;
+            --surface:    #0c1120;
+            --surface2:   #111827;
+            --border:     #1a243a;
+            --border2:    #242f48;
+            --blue:       #5b8ef5;
+            --blue-glow:  rgba(91,141,245,0.12);
+            --amber:      #f0a840;
+            --amber-glow: rgba(240,168,64,0.10);
+            --green:      #34d399;
+            --text:       #dce4f4;
+            --text2:      #7f92ae;
+            --text3:      #354560;
+            --r:          8px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(91,141,245,0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(91,141,245,0.022) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -220px; left: -220px;
+            width: 640px; height: 640px;
+            background: radial-gradient(circle, rgba(91,141,245,0.055) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── NAV ─── */
+        header {
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(6,8,15,0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .logo em { color: var(--blue); font-style: normal; }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--text2);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        /* ─── HERO ─── */
+        .hero { padding: 88px 0 72px; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 28px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(52px, 10vw, 84px);
+            font-weight: 700;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 .accent { color: var(--blue); display: block; }
+
+        .hero-sub {
+            font-size: 17px;
+            color: var(--text2);
+            max-width: 560px;
+            line-height: 1.72;
+            margin-bottom: 44px;
+        }
+
+        .hero-sub strong { color: var(--text); font-weight: 500; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 22px;
+            background: var(--blue);
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            border-radius: var(--r);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn:hover { background: #4979e2; transform: translateY(-2px); }
+        .btn svg { transition: transform 0.2s; }
+        .btn:hover svg { transform: translateX(3px); }
+
+        /* ─── SECTION LABEL ─── */
+        .sec {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .sec span {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text3);
+            white-space: nowrap;
+        }
+
+        .sec-rule {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ─── STORY / THE PIVOT ─── */
+        .story { margin-bottom: 64px; }
+
+        .pull-quote {
+            border-left: 2px solid var(--blue);
+            padding: 14px 0 14px 26px;
+            margin-bottom: 36px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(16px, 2.5vw, 20px);
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.54;
+            letter-spacing: -0.01em;
+            font-style: italic;
+        }
+
+        .pm-active { margin-bottom: 40px; }
+
+        .pm-active-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text3);
+            margin-bottom: 12px;
+        }
+
+        .pm-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .pm-chip {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--blue);
+            background: var(--blue-glow);
+            border: 1px solid rgba(91,141,245,0.22);
+            padding: 5px 12px;
+            border-radius: 4px;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .story-block { padding-right: 36px; }
+
+        .story-block:last-child {
+            padding-right: 0;
+            padding-left: 36px;
+            border-left: 1px solid var(--border);
+        }
+
+        .story-block h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+
+        .story-block p {
+            font-size: 14px;
+            color: var(--text2);
+            line-height: 1.78;
+            margin-bottom: 14px;
+        }
+
+        .story-block p:last-of-type { margin-bottom: 0; }
+        .story-block p strong { color: var(--text); font-weight: 500; }
+
+        .target-callout {
+            margin-top: 22px;
+            padding: 14px 16px;
+            background: var(--blue-glow);
+            border: 1px solid rgba(91,141,245,0.22);
+            border-radius: var(--r);
+            font-size: 13.5px;
+            color: var(--text);
+            font-weight: 500;
+            line-height: 1.52;
+        }
+
+        .target-callout span {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
+
+        /* ─── STATS BAR ─── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            overflow: hidden;
+            background: var(--surface);
+            margin: 0 0 64px;
+        }
+
+        .s-item {
+            padding: 22px 22px;
+            border-right: 1px solid var(--border);
+        }
+
+        .s-item:last-child { border-right: none; }
+
+        .s-val {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+
+        .s-lbl { font-size: 11.5px; color: var(--text3); letter-spacing: 0.03em; }
+
+        /* ─── BUILDING IN PUBLIC ─── */
+        .bip { margin-bottom: 64px; }
+
+        .bip-manifesto {
+            font-size: 15px;
+            color: var(--text2);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            max-width: 700px;
+        }
+
+        .bip-manifesto strong { color: var(--text); font-weight: 500; }
+
+        .bip-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .bip-card {
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            background: var(--surface);
+            padding: 26px;
+        }
+
+        .bip-card-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .bip-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .bip-dot.blue  { background: var(--blue); }
+        .bip-dot.amber { background: var(--amber); }
+
+        .bip-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        .bip-items {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bip-items li {
+            font-size: 13.5px;
+            color: var(--text2);
+            line-height: 1.55;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .bip-items li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 1px;
+            color: var(--text3);
+            font-size: 11px;
+        }
+
+        /* ─── FEATURED CARD ─── */
+        .feat {
+            display: block;
+            text-decoration: none;
+            position: relative;
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            background: var(--surface);
+            padding: 40px;
+            margin-bottom: 64px;
+            overflow: hidden;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+        }
+
+        .feat::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue), var(--amber));
+        }
+
+        .feat:hover {
+            border-color: rgba(91,141,245,0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(91,141,245,0.09);
+        }
+
+        .feat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--amber);
+            background: var(--amber-glow);
+            border: 1px solid rgba(240,168,64,0.2);
+            padding: 4px 11px;
+            border-radius: 4px;
+            margin-bottom: 22px;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--amber);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.4; transform: scale(0.75); }
+        }
+
+        .feat h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+
+        .feat-desc {
+            font-size: 15px;
+            color: var(--text2);
+            line-height: 1.72;
+            max-width: 580px;
+            margin-bottom: 24px;
+        }
+
+        .feat-desc em { color: var(--text); font-style: italic; }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+
+        .chip {
+            font-size: 12px;
+            color: var(--text2);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            padding: 4px 11px;
+            border-radius: 4px;
+        }
+
+        .feat-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--blue);
+        }
+
+        .feat-cta svg { transition: transform 0.2s; }
+        .feat:hover .feat-cta svg { transform: translateX(4px); }
+
+        /* ─── PORTFOLIO GRID ─── */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+            margin-bottom: 72px;
+        }
+
+        .p-card {
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            background: var(--surface);
+            padding: 24px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        a.p-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        a.p-card:hover { border-color: var(--border2); background: var(--surface2); }
+        .p-card.locked { opacity: 0.42; }
+
+        .p-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .p-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .p-status.live  { color: var(--green); }
+        .p-status.live .p-dot  { background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
+        .p-status.soon  { color: var(--text3); }
+        .p-status.soon .p-dot  { background: var(--text3); }
+
+        .p-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text3);
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+
+        .p-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .p-desc { font-size: 13px; color: var(--text2); line-height: 1.58; }
+        .p-eta  { font-size: 12px; color: var(--text3); margin-top: 12px; }
+
+        /* ─── CREDENTIALS ─── */
+        .certs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 72px; }
+
+        .cert {
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--text2);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 4px;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .foot-copy { font-size: 12.5px; color: var(--text3); }
+        .foot-links { display: flex; gap: 20px; }
+
+        .foot-links a {
+            font-size: 12.5px;
+            color: var(--text3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .foot-links a:hover { color: var(--text2); }
+
+        /* ─── REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            .hero { padding: 56px 0 44px; }
+
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .s-item:nth-child(2) { border-right: none; }
+            .s-item:nth-child(3), .s-item:nth-child(4) { border-top: 1px solid var(--border); }
+            .s-item:nth-child(4) { border-right: none; }
+
+            .story-grid { grid-template-columns: 1fr; }
+            .story-block { padding-right: 0; }
+            .story-block:last-child {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid var(--border);
+                padding-top: 28px;
+                margin-top: 28px;
+            }
+
+            .bip-grid { grid-template-columns: 1fr; }
+
+            .feat { padding: 24px 22px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+    <div class="wrap">
+        <nav>
+            <a href="/" class="logo">Payel <em>Nath</em></a>
+            <ul class="nav-links">
+                <li><a href="#story">The Pivot</a></li>
+                <li><a href="#bip">Building in Public</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="https://linkedin.com/in/payelnath" target="_blank">LinkedIn ↗</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="wrap">
+
+        <!-- ── HERO ── -->
+        <section class="hero">
+            <div class="eyebrow">Senior Product Owner · In Pivot to PM · Hyderabad</div>
+            <h1>Payel<span class="accent">Nath.</span></h1>
+            <p class="hero-sub">
+                <strong>10 years of enterprise product ownership</strong> across supply chain and API platforms.
+                An MBA that added the business layer. A deliberate, documented pivot to Product Management —
+                <strong>built entirely in public</strong>.
+            </p>
+            <a href="https://payelnath.github.io/career-intelligence-map/" class="btn" target="_blank">
+                View Career Intelligence Map
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </a>
+        </section>
+
+        <!-- ── THE PIVOT ── -->
+        <section id="story" class="story">
+            <div class="sec reveal">
+                <span>The Pivot</span>
+                <div class="sec-rule"></div>
+            </div>
+
+            <blockquote class="pull-quote reveal">
+                "A decade of enterprise PO work builds skills that most PM job descriptions don't have words for. This portfolio exists to make those skills legible — and to add the ones that are still missing."
+            </blockquote>
+
+            <div class="pm-active reveal">
+                <div class="pm-active-label">PM-level work I'm already doing at FedEx GCC</div>
+                <div class="pm-chips">
+                    <span class="pm-chip">Discovery &amp; User Research</span>
+                    <span class="pm-chip">Capability Roadmaps</span>
+                    <span class="pm-chip">Business Case Ownership</span>
+                    <span class="pm-chip">API Strategy</span>
+                    <span class="pm-chip">OKR Framing</span>
+                    <span class="pm-chip">Cross-functional Alignment</span>
+                    <span class="pm-chip">Platform Thinking</span>
+                    <span class="pm-chip">Stakeholder Prioritisation</span>
+                </div>
+            </div>
+
+            <div class="story-grid">
+                <div class="story-block reveal">
+                    <h3>Background</h3>
+                    <p>
+                        I started in <strong>logistics technology</strong> and moved through supply chain planning
+                        systems into API platform ownership at FedEx GCC — a path that gave me domain depth most
+                        tech PMs never encounter: how global shipment networks actually function, why API governance
+                        matters at enterprise scale, and what it takes to ship product inside a complex,
+                        multi-stakeholder organisation.
+                    </p>
+                    <p>
+                        My <strong>MBA from IBS Hyderabad</strong> layered in the business vocabulary — P&amp;L
+                        framing, competitive strategy, stakeholder economics. My agile certifications (CSM, CSPO,
+                        A-CSPO, SAFe POPM) gave me the methodological rigour that scaled organisations run on.
+                        The raw material is there.
+                    </p>
+                </div>
+
+                <div class="story-block reveal">
+                    <h3>The Pivot</h3>
+                    <p>
+                        The line between Senior PO and Senior PM is real, but narrower than job descriptions suggest.
+                        PO work in scaled agile environments skews execution-heavy — sprint planning,
+                        backlog grooming, delivery accountability. PM work lives upstream:
+                        <strong>discovery, market framing, business case ownership,</strong> and strategic
+                        roadmap leadership.
+                    </p>
+                    <p>
+                        I'm already operating upstream. I run discovery, shape capability roadmaps, and own
+                        strategic narratives with senior business stakeholders. What this portfolio is building
+                        is the <strong>public evidence</strong> of that — artifacts that show the thinking,
+                        not just the delivery record.
+                    </p>
+                    <div class="target-callout">
+                        <span>Target</span>
+                        Senior PM roles at tech-first companies where supply chain, logistics, or API platforms are a core strategic surface — not an afterthought.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── STATS BAR ── -->
+        <div class="stats reveal">
+            <div class="s-item">
+                <div class="s-val">10 yrs</div>
+                <div class="s-lbl">Experience</div>
+            </div>
+            <div class="s-item">
+                <div class="s-val">FedEx GCC</div>
+                <div class="s-lbl">Current employer</div>
+            </div>
+            <div class="s-item">
+                <div class="s-val">SC × API</div>
+                <div class="s-lbl">Domain intersection</div>
+            </div>
+            <div class="s-item">
+                <div class="s-val">2026–36</div>
+                <div class="s-lbl">Planning horizon</div>
+            </div>
+        </div>
+
+        <!-- ── BUILDING IN PUBLIC ── -->
+        <section id="bip" class="bip">
+            <div class="sec reveal">
+                <span>Building in Public</span>
+                <div class="sec-rule"></div>
+            </div>
+
+            <p class="bip-manifesto reveal">
+                Most career pivots are announced after the fact. I'm doing the opposite —
+                <strong>publishing real PM-level artifacts in the open</strong> across five strategic domains
+                over 50 weeks. Not retrospective case studies. Not opinion pieces. Actual frameworks, analyses,
+                and interactive tools — each one scoped and shipped like a product. The goal is dual: to
+                demonstrate that my thinking already operates at PM level, and to deliberately learn the practices,
+                tooling, and community norms of the tech PM world I'm moving into.
+            </p>
+
+            <div class="bip-grid">
+                <div class="bip-card reveal">
+                    <div class="bip-card-head">
+                        <div class="bip-dot blue"></div>
+                        <h4>Demonstrating</h4>
+                    </div>
+                    <ul class="bip-items">
+                        <li>Strategic product thinking that operates above sprint execution and backlog mechanics</li>
+                        <li>Systems reasoning across the supply chain × API × platform intersection</li>
+                        <li>Data-informed product decisions using Python, SQL, and product analytics frameworks</li>
+                        <li>Independent end-to-end shipping: idea → information architecture → live artifact</li>
+                    </ul>
+                </div>
+
+                <div class="bip-card reveal">
+                    <div class="bip-card-head">
+                        <div class="bip-dot amber"></div>
+                        <h4>Learning</h4>
+                    </div>
+                    <ul class="bip-items">
+                        <li>Tech PM practices at product-led and growth-stage companies, outside enterprise SAFe</li>
+                        <li>Modern AI tooling at the product operations and discovery layer</li>
+                        <li>Consumer and SMB discovery methods versus enterprise stakeholder management</li>
+                        <li>Building audience, credibility, and feedback loops through sustained public work</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FEATURED ── -->
+        <div class="sec reveal">
+            <span>Featured</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <a href="https://payelnath.github.io/career-intelligence-map/" class="feat reveal" target="_blank">
+            <div class="feat-badge"><div class="pulse-dot"></div> Live · Project 01</div>
+            <h2>Career Intelligence Map</h2>
+            <p class="feat-desc">
+                A full-spectrum interactive visualization of skills, career archetypes, industry coverage, experience timeline, and strategic synergies — built on the premise that career differentiation lives in <em>combinations</em>, not individual credentials. The first public artifact of the pivot.
+            </p>
+            <div class="chips">
+                <span class="chip">Skills Architecture</span>
+                <span class="chip">Career Archetypes</span>
+                <span class="chip">Industry Coverage</span>
+                <span class="chip">Experience Timeline</span>
+                <span class="chip">Strategic Synergies</span>
+            </div>
+            <div class="feat-cta">
+                Explore the map
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </a>
+
+        <!-- ── PORTFOLIO ── -->
+        <div id="portfolio" class="sec reveal">
+            <span>Portfolio</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="grid">
+            <a href="https://payelnath.github.io/career-intelligence-map/" class="p-card reveal" target="_blank">
+                <div class="p-status live"><div class="p-dot"></div>Live</div>
+                <div class="p-num">01</div>
+                <div class="p-title">Career Intelligence Map</div>
+                <p class="p-desc">Full-spectrum career visualization spanning skills, archetypes, and strategic synergies.</p>
+            </a>
+
+            <div class="p-card locked reveal">
+                <div class="p-status soon"><div class="p-dot"></div>Coming soon</div>
+                <div class="p-num">02</div>
+                <div class="p-title">API PM Playbook</div>
+                <p class="p-desc">Frameworks from enterprise API product ownership — versioning, lifecycle, and platform thinking.</p>
+                <div class="p-eta">Q3 2026</div>
+            </div>
+
+            <div class="p-card locked reveal">
+                <div class="p-status soon"><div class="p-dot"></div>Coming soon</div>
+                <div class="p-num">03</div>
+                <div class="p-title">Supply Chain Tech Decoded</div>
+                <p class="p-desc">SC planning systems explained for the tech PM world — bridging domain depth and product thinking.</p>
+                <div class="p-eta">Q3 2026</div>
+            </div>
+
+            <div class="p-card locked reveal">
+                <div class="p-status soon"><div class="p-dot"></div>Coming soon</div>
+                <div class="p-num">04</div>
+                <div class="p-title">Product Analytics for PMs</div>
+                <p class="p-desc">Python and SQL notebooks for data-driven product decisions, built for non-engineering PM tracks.</p>
+                <div class="p-eta">Q4 2026</div>
+            </div>
+
+            <div class="p-card locked reveal">
+                <div class="p-status soon"><div class="p-dot"></div>Coming soon</div>
+                <div class="p-num">05</div>
+                <div class="p-title">Agentic AI for Enterprise SC</div>
+                <p class="p-desc">AI tools at the supply chain × logistics intersection — PM-level frameworks for 2026 and beyond.</p>
+                <div class="p-eta">Q4 2026</div>
+            </div>
+        </div>
+
+        <!-- ── CREDENTIALS ── -->
+        <div class="sec reveal">
+            <span>Credentials</span>
+            <div class="sec-rule"></div>
+        </div>
+
+        <div class="certs reveal">
+            <span class="cert">CSM</span>
+            <span class="cert">CSPO</span>
+            <span class="cert">A-CSPO</span>
+            <span class="cert">SAFe POPM</span>
+            <span class="cert">MBA · IBS Hyderabad</span>
+            <span class="cert">B.Tech Electronics · WBUT</span>
+        </div>
+
+    </div>
+</main>
+
+<div class="wrap">
+    <footer>
+        <div class="foot-copy">Payel Nath · Hyderabad · 2026</div>
+        <div class="foot-links">
+            <a href="https://linkedin.com/in/payelnath" target="_blank">LinkedIn</a>
+            <a href="https://github.com/payelnath" target="_blank">GitHub</a>
+            <!-- replace # with mailto:your@email.com -->
+            <a href="#">Email</a>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+
+
+</body></html>
